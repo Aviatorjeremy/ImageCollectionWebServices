@@ -1,0 +1,93 @@
+<% include header.html %>
+<style type="text-css">
+img
+{
+height: 50%
+}
+</style>
+<link href="css/btn.css" type="text/css" rel="stylesheet" />
+   <div id="wrapper">   
+    <div id="content">
+        
+    <h1>
+    Album-<%=folder%>
+</h1>
+
+    <div class="grid-16-8 clearfix">
+        
+        
+        <div class="article">
+	  
+
+<div>
+    <div id="image" class="pl" style="padding:3px;border-bottom:1px solid #ddd;margin:0 0 10px 0;text-align:center">
+       <span class="rr">&gt; <a href="/delete?folder=<%=folder%>&path=<%=path%>">Delete this photo</a></span>
+        <span class="rr">&gt; <a href="/album?folder=<%=folder%>">Back to Album</a></span>  
+    </div>
+    <div style="text-align:center;width:600px; height:400px;">
+          <a class="mainphoto" href="/photo?folder=<%=folder%>&path=<%=next_photo%>" title="Click to show next photo">
+              <img class='normal' src="/image?folder=<%=folder%>&path=<%=path%>" width="100%" height="100%"/>
+          </a>
+      </div>
+</div>
+<div id="last"><%=description%><br/></div>
+<h2>
+        Comments:
+            &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+    </h2>
+
+        <div class="comment-form txd" id="add_comment">
+
+        <form name="comment_form" id="comment_form" method="post" action="/photo?folder=<%=folder%>&path=<%=path%>"><div style="display:none;"><input type="hidden" name="ck" value="OQav"/></div>
+          <div class="item">
+              <textarea name="rv_comment" id="rv_comment" rows="4" cols="64"></textarea><br/>
+          </div>
+            <input type="hidden" name="start" value="0"/>
+            <div class="item">
+                <span class="bn-flat-hot rr"><input type="submit"  value="Submit comments" class="btn"/></span>
+            </div>
+        </form></div>
+</div>
+
+<div class="aside">
+            
+
+
+<ul class="mbt">
+        <% var length=comments.length;%>
+          <% for(var i=0; i<length;i++){ %>
+          
+            <li class="mbtrdot" id=<%=i%>>User : <%=comments[i].User%>&nbsp; &nbsp;Said : <span id="comment<%=i%>"><%=comments[i].said%></span>&nbsp; &nbsp;(<%=comments[i].comments_time%>) &nbsp; &nbsp;<a id="edit" href="javascript:void(0)" <%if(comments[i].User==u_ip){%>
+          onclick="javascript:changeForm(<%=i%>);"<%}else{%>onclick="javascript:NoAuthor(1)"<%}%>>edit</a> &nbsp; &nbsp;<a <%if(comments[i].User==u_ip){%> href="/comment_delete/<%=i%>?folder=<%=folder%>&path=<%=path%>"<%}else{%>href="javascript:void(0)" onclick="javascript:NoAuthor(2)"<%}%>>delete</a></li>
+          <%}%>
+</ul>
+        </div>
+        <div class="extra">
+</div>
+
+</div>
+
+</div>
+<script type='text/javascript'>
+function changeForm(i){
+  
+  var x=document.getElementById("comment_form")
+  x.action="/comment_edit/"+i+"?folder=<%=folder%>&path=<%=path%>"
+  var y=document.getElementById("rv_comment")
+  var z=document.getElementById("comment"+i).innerHTML
+  y.innerHTML=z
+}
+function NoAuthor(operate){
+  if (operate==1) {
+    alert("You can't edit other people's comments")
+  };
+  if (operate==2) {
+    alert("You can't delete other people's comments")
+  };
+
+    
+}
+</script>
+    
+     
+<% include footer.html %>

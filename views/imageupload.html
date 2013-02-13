@@ -1,0 +1,70 @@
+﻿<html>       
+<head>
+	<style type="text/css" media="screen">
+			body {
+	background: #F9F9F9;
+	font-family: Calibri;
+	font-size: 18px;
+	}
+	h2 {
+		font-size: 40px;
+		margin-top: 6px;
+		margin-bottom: 10px;
+	}
+	 .ImageUpload {
+	  display: block;
+	  font: 400 60px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	  color: #353535;
+	  width: 100%;
+	}
+	.btn{padding:5px 16px;*padding:4px 8px;height:27px;cursor:pointer;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;color:#fff;background-color:#3fa156;border:1px solid #528641;display:inline}.btn:hover{background-color:#4fca6c;border-color:#6aad54}.btn:active{background-color:#3fa156;border-color:#528641}
+	#uploadImg{ font-size:12px; overflow:hidden; position:absolute}
+    #file{ position:absolute; z-index:100; margin-left:-180px; font-size:60px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;}
+
+    .photo-name .field,.photo-intro .field{font-size:24px;width: 100%;}.album-reply .field,.album-privacy .field,.album-order .field{margin-right:11px}.album-privacy label{margin-right:60px}.album-order label{margin-right:24px}.photo-footer{margin-top:45px}.row{margin-bottom:20px;display:block}.btn{padding:5px 16px;*padding:4px 8px;height:27px;cursor:pointer;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;color:#fff;background-color:#3fa156;border:1px solid #528641;display:inline}.btn:hover{background-color:#4fca6c;border-color:#6aad54}.btn:active{background-color:#3fa156;border-color:#528641}.cancel-album{float:right;display:inline}#photo_name,#photo_intro{margin-top:5px;padding:3px;border:1px solid #ccc;line-height:1.62}#photo_name{font-size:14px;width:400px}#photo_intro{height:242px;resize:vertial;font-size:13px;width:582px}#photo_name:focus,#photo_intro:focus{border-color:gray}
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
+<title>Image Upload</title>             
+</head>      
+<body>     
+ <div id="wrapper">
+ <span class='ImageUpload'>Image Upload - <%=album%></span>             
+    <div id="content">
+    <div class="grid-16-8 clearfix">
+            
+        <div class="article">
+
+
+<br />  
+<br />
+<br />   
+<form name="upload" action="/upload?folder=<%=album%>" method='post' enctype="multipart/form-data">       
+<div class="row photo-name" ><button class="btn" style="background-color:red">Upload Image</button>
+	<input name="image1" id='file' type="file" value='Add Image' />
+	
+</div>
+
+<div class="row photo-intro" >
+        <label class="field" for="album_intro">Photo Introduction</label><br/> 
+        <textarea name="photo_intro" id="photo_intro" class="most128"></textarea>
+</div>
+
+<div class="row photo-footer">
+<input name="submit" type="submit" value="Submit" class="btn"/>
+</div>
+
+</form>
+     </div>
+        <div class="aside">
+            
+
+        </div>
+        <div class="extra">
+            
+        </div>
+    </div>
+    </div>
+    </div>
+</body>       
+</html>

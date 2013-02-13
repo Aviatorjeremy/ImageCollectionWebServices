@@ -1,0 +1,43 @@
+﻿<% include header.html %>
+<link href="css/albumStyle.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/autoZoomLoadImage.js"></script>
+ <script type="text/javascript">
+$(function(){
+	$(".zoom_img").autoZoomLoadImage(true, 200, 200);
+})
+</script>
+
+<div id="wrapper">        
+    <div id="content">     
+    <h1>
+        Album-<%=folder%>
+    </h1>
+    <div class="grid-16-8 clearfix">    
+        <div class="article">
+<div class="pl photitle">
+    &nbsp;&gt;&nbsp;<a href="/delete?folder=<%=folder%>">Delete Album</a>
+    &nbsp;&gt;&nbsp;<a href="/upload?folder=<%=folder%>">Add photo</a>
+    &nbsp;&gt;&nbsp;<a href="/">Back to home page</a>
+</div>
+<div class="photolst_clearfix">
+    <% var length=messages.length;%>
+    <% for(var i=0; i<length;i++){ %>
+	 <div class="photo_wrap">
+        <a href="/photo?folder=<%=folder%>&path=<%=messages[i].img_name%>" class="photolst_photo" title="">
+        <img class="zoom_img" src="/image?folder=<%=folder%>&path=<%=messages[i].img_name%>" />
+        </a><br/>
+        <div class="pl"><%= messages[i].description%></div>
+        <div style="color:#999">
+        </div>
+    </div>
+    <% } %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+  
+ 
+<% include footer.html %>

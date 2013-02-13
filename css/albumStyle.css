@@ -1,0 +1,2 @@
+.photolst_clearfix .photo_wrap{*position:absolute;top:50%;left:50%;}
+.photolst_clearfix .photo_wrap img{*position:relative;top:-50%;left:-50%;}

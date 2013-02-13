@@ -1,0 +1,61 @@
+<% include header.html%>
+ <link href="css/btn.css" type="text/css" rel="stylesheet" />
+ <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/autoZoomLoadImage.js"></script>
+ <script type="text/javascript">
+$(function(){
+    $(".album").autoZoomLoadImage(true, 200, 200);
+})
+</script>
+<div id="wrapper">    
+<div id="content">
+ 	<h1>Soton Album</h1>
+<div class="grid-16-8 clearfix">
+<div class="article">
+<div class="wr">
+
+	    <%var album_arr_length=md.length;%>
+	    <%for(var i=0; i<album_arr_length; i++) {%> 
+
+        <div class="albumlst">
+        
+        
+        <a class="album_photo" href="/album?folder=<%=md[i].album_name%>">
+        <%if(md[i].cover_img=='null'){%>
+            <img class="album" id="album"  src="/image?folder=default&path=default.jpg"/>
+       
+        <%}else{%>
+
+            <img class="album" id="album"  src="/image?folder=<%=md[i].album_name%>&path=<%=md[i].cover_img%>"/>
+        <%}%>
+        </a>
+        <div class="albumlst_r">
+            <div class="pl2"><a href="/album?folder=<%=md[i].album_name%>"><%=md[i].album_name%></a></div>
+        <div class="albumlst_descri"><%=md[i].description%></div>
+
+       
+        &gt;<a href="/edit?folder=<%=md[i].album_name%>">edit</a>
+        &nbsp;&gt;<a href="/upload?folder=<%=md[i].album_name%>">Add new photo</a>
+        </div>
+        <br/>
+        </div>
+        <%}%>
+
+
+         
+
+
+    </div>
+</div>
+</div>
+</div>
+
+ <div class="aside">
+         
+    <a href="/create" class="create-new-album"><button class='btn'>Create New Album</button></a>
+    <br/><br/>
+
+
+</div>
+</div>
+<% include footer.html%>
